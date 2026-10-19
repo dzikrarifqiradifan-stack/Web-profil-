@@ -1,838 +1,601 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Biodata Dzikra Rifqi Radifan</title>
-
-    <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <style>
-        /* =========================
-           RESET
-        ========================== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: "Poppins", sans-serif;
-            background: #f5f7ff;
-            color: #222;
-            line-height: 1.6;
-            transition: 0.3s ease;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* =========================
-           DARK MODE
-        ========================== */
-        body.dark {
-            background: #111827;
-            color: #f3f4f6;
-        }
-
-        body.dark .navbar {
-            background: rgba(17, 24, 39, 0.95);
-        }
-
-        body.dark .card,
-        body.dark .bio-card,
-        body.dark .hobby-card,
-        body.dark .education-card {
-            background: #1f2937;
-            color: #f3f4f6;
-        }
-
-        body.dark .about-text {
-            color: #d1d5db;
-        }
-
-        /* =========================
-           NAVBAR
-        ========================== */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 70px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 8%;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(12px);
-            z-index: 1000;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
-        }
-
-        .logo {
-            font-size: 22px;
-            font-weight: 700;
-            color: #4f46e5;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 25px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            font-size: 14px;
-            font-weight: 500;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #4f46e5;
-        }
-
-        .nav-buttons {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .theme-btn,
-        .menu-btn {
-            border: none;
-            background: #4f46e5;
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 17px;
-        }
-
-        .menu-btn {
-            display: none;
-        }
-
-        /* =========================
-           HERO
-        ========================== */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 100px 8% 60px;
-        }
-
-        .hero-container {
-            width: 100%;
-            max-width: 1100px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            gap: 50px;
-        }
-
-        .hero-text h4 {
-            color: #4f46e5;
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-
-        .hero-text h1 {
-            font-size: clamp(38px, 6vw, 65px);
-            line-height: 1.1;
-            margin-bottom: 15px;
-        }
-
-        .hero-text h2 {
-            font-size: 24px;
-            color: #555;
-            margin-bottom: 20px;
-        }
-
-        body.dark .hero-text h2 {
-            color: #d1d5db;
-        }
-
-        .hero-text p {
-            max-width: 550px;
-            color: #666;
-            margin-bottom: 30px;
-        }
-
-        body.dark .hero-text p {
-            color: #d1d5db;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 25px;
-            background: #4f46e5;
-            color: white;
-            border-radius: 30px;
-            font-weight: 500;
-            transition: 0.3s;
-            border: 2px solid #4f46e5;
-        }
-
-        .btn:hover {
-            background: transparent;
-            color: #4f46e5;
-            transform: translateY(-3px);
-        }
-
-        .profile-container {
-            display: flex;
-            justify-content: center;
-        }
-
-        .profile {
-            width: 320px;
-            height: 320px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 10px solid white;
-            box-shadow: 0 15px 40px rgba(79, 70, 229, 0.25);
-            background: #ddd;
-        }
-
-        body.dark .profile {
-            border-color: #1f2937;
-        }
-
-        /* =========================
-           GENERAL SECTION
-        ========================== */
-        section {
-            padding: 90px 8%;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title h2 {
-            font-size: 35px;
-            margin-bottom: 10px;
-        }
-
-        .section-title p {
-            color: #777;
-        }
-
-        body.dark .section-title p {
-            color: #d1d5db;
-        }
-
-        /* =========================
-           BIODATA
-        ========================== */
-        .biodata {
-            background: #eef0ff;
-        }
-
-        body.dark .biodata {
-            background: #172033;
-        }
-
-        .bio-grid {
-            max-width: 1000px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .bio-card {
-            background: white;
-            padding: 22px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
-            transition: 0.3s;
-        }
-
-        .bio-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .bio-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #e0e7ff;
-            font-size: 22px;
-        }
-
-        .bio-card h4 {
-            color: #777;
-            font-size: 13px;
-        }
-
-        .bio-card p {
-            font-weight: 600;
-        }
-
-        /* =========================
-           ABOUT
-        ========================== */
-        .about-container {
-            max-width: 900px;
-            margin: auto;
-            text-align: center;
-        }
-
-        .about-text {
-            color: #555;
-            font-size: 17px;
-        }
-
-        /* =========================
-           EDUCATION
-        ========================== */
-        .education-container {
-            max-width: 850px;
-            margin: auto;
-            position: relative;
-        }
-
-        .education-container::before {
-            content: "";
-            position: absolute;
-            left: 20px;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: #4f46e5;
-        }
-
-        .education-card {
-            position: relative;
-            margin-bottom: 30px;
-            margin-left: 60px;
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
-        }
-
-        .education-card::before {
-            content: "";
-            position: absolute;
-            left: -50px;
-            top: 25px;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: #4f46e5;
-            border: 5px solid #eef0ff;
-        }
-
-        .education-card span {
-            color: #4f46e5;
-            font-weight: 600;
-        }
-
-        /* =========================
-           HOBBY
-        ========================== */
-        .hobby-section {
-            background: #eef0ff;
-        }
-
-        body.dark .hobby-section {
-            background: #172033;
-        }
-
-        .hobby-grid {
-            max-width: 1000px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .hobby-card {
-            background: white;
-            padding: 30px 15px;
-            border-radius: 18px;
-            text-align: center;
-            transition: 0.3s;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
-        }
-
-        .hobby-card:hover {
-            transform: translateY(-8px);
-            background: #4f46e5;
-            color: white;
-        }
-
-        .hobby-card .emoji {
-            font-size: 40px;
-            display: block;
-            margin-bottom: 12px;
-        }
-
-        /* =========================
-           DREAM
-        ========================== */
-        .dream {
-            text-align: center;
-        }
-
-        .dream-box {
-            max-width: 800px;
-            margin: auto;
-            padding: 50px 30px;
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            color: white;
-            border-radius: 25px;
-            box-shadow: 0 20px 40px rgba(79,70,229,0.25);
-        }
-
-        .dream-box h3 {
-            font-size: 30px;
-            margin-bottom: 15px;
-        }
-
-        .dream-box p {
-            font-size: 17px;
-        }
-
-        /* =========================
-           CONTACT
-        ========================== */
-        .contact {
-            background: #eef0ff;
-        }
-
-        body.dark .contact {
-            background: #172033;
-        }
-
-        .contact-container {
-            max-width: 800px;
-            margin: auto;
-            text-align: center;
-        }
-
-        .socials {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-
-        .social {
-            padding: 12px 20px;
-            border-radius: 25px;
-            background: white;
-            color: #4f46e5;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-
-        body.dark .social {
-            background: #1f2937;
-        }
-
-        .social:hover {
-            transform: translateY(-4px);
-            background: #4f46e5;
-            color: white;
-        }
-
-        /* =========================
-           FOOTER
-        ========================== */
-        footer {
-            text-align: center;
-            padding: 25px;
-            background: #111827;
-            color: white;
-            font-size: 14px;
-        }
-
-        /* =========================
-           BACK TO TOP
-        ========================== */
-        #topBtn {
-            position: fixed;
-            right: 25px;
-            bottom: 25px;
-            width: 45px;
-            height: 45px;
-            border: none;
-            border-radius: 50%;
-            background: #4f46e5;
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
-            display: none;
-            z-index: 999;
-        }
-
-        /* =========================
-           SCROLL ANIMATION
-        ========================== */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: 0.8s ease;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* =========================
-           RESPONSIVE
-        ========================== */
-        @media (max-width: 800px) {
-
-            .nav-links {
-                position: absolute;
-                top: 70px;
-                right: -100%;
-                width: 230px;
-                padding: 25px;
-                background: white;
-                flex-direction: column;
-                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-                transition: 0.3s;
-            }
-
-            body.dark .nav-links {
-                background: #1f2937;
-            }
-
-            .nav-links.active {
-                right: 0;
-            }
-
-            .menu-btn {
-                display: block;
-            }
-
-            .hero-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-text p {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .profile {
-                width: 250px;
-                height: 250px;
-            }
-
-            .bio-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hobby-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 500px) {
-
-            section {
-                padding: 70px 5%;
-            }
-
-            .hero {
-                padding-left: 5%;
-                padding-right: 5%;
-            }
-
-            .hero-text h1 {
-                font-size: 40px;
-            }
-
-            .hobby-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .profile {
-                width: 210px;
-                height: 210px;
-            }
-
-            .education-card {
-                margin-left: 45px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biodata Dzikra Rifqi Radifan</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --bg: #f4f5ff;
+      --card: #ffffff;
+      --text: #20213a;
+      --muted: #73758e;
+      --primary: #7048e8;
+      --secondary: #a855f7;
+      --border: #e6e6f2;
+    }
+
+    body.dark {
+      --bg: #11111f;
+      --card: #202035;
+      --text: #f5f3ff;
+      --muted: #b8b6d0;
+      --border: #383850;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      transition: 0.3s;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 8%;
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .theme-btn {
+      background: var(--bg);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 7px 12px;
+      cursor: pointer;
+    }
+
+    .hero {
+      min-height: 520px;
+      padding: 70px 8%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 60px;
+      background:
+        radial-gradient(circle at 10% 10%,
+        #ded5ff, transparent 45%),
+        var(--bg);
+    }
+
+    .hero-text {
+      max-width: 570px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #e8e0ff;
+      color: #613cc8;
+      padding: 6px 15px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(35px, 5vw, 54px);
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+
+    h1 span {
+      color: var(--primary);
+    }
+
+    .hero p, .about-text {
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .btn {
+      display: inline-block;
+      border: none;
+      border-radius: 12px;
+      padding: 12px 23px;
+      background: linear-gradient(
+        135deg, var(--primary), var(--secondary)
+      );
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px #7048e844;
+    }
+
+    .profile-frame {
+      width: 260px;
+      height: 300px;
+      flex-shrink: 0;
+      padding: 7px;
+      border-radius: 30px;
+      background: linear-gradient(
+        135deg, var(--primary), #d8b4fe
+      );
+      transform: rotate(3deg);
+      box-shadow: 0 15px 40px #7048e833;
+    }
+
+    .profile-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 24px;
+      background: var(--card);
+    }
+
+    section {
+      padding: 65px 8%;
+      scroll-margin-top: 70px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .section-title h2 {
+      font-size: 30px;
+      margin-bottom: 5px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 8px 25px #20234208;
+    }
+
+    .card h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .info-row:last-child {
+      border-bottom: none;
+    }
+
+    .info-row span:first-child {
+      color: var(--muted);
+    }
+
+    .info-row span:last-child {
+      font-weight: bold;
+      text-align: right;
+    }
+
+    .hobby-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .hobby-card {
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .hobby-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--primary);
+    }
+
+    .hobby-icon {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    .hobby-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .dream-card {
+      max-width: 750px;
+      margin: auto;
+      padding: 40px 25px;
+      text-align: center;
+      color: white;
+      border-radius: 25px;
+      background: linear-gradient(
+        135deg, #6040d8, #a855f7
+      );
+    }
+
+    .dream-card h2 {
+      font-size: 29px;
+      margin: 12px 0;
+    }
+
+    .dream-card p {
+      color: #f1eaff;
+    }
+
+    .dream-icon {
+      font-size: 55px;
+    }
+
+    .contact-card {
+      max-width: 600px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .contact-card p {
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    footer {
+      padding: 25px;
+      text-align: center;
+      background: var(--card);
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: 0.7s;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 14px 5%;
+      }
+
+      .nav-links {
+        gap: 10px;
+        font-size: 12px;
+      }
+
+      .logo {
+        font-size: 18px;
+      }
+
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 50px 6%;
+        gap: 30px;
+      }
+
+      .profile-frame {
+        width: 210px;
+        height: 245px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hobby-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 50px 6%;
+      }
+
+      .info-row {
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .nav-links {
+        gap: 7px;
+      }
+
+      .nav-links a {
+        font-size: 11px;
+      }
+
+      .theme-btn {
+        padding: 5px 8px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <!-- =========================
-         NAVBAR
-    ========================== -->
-    <nav class="navbar">
+  <!-- NAVIGASI -->
+  <nav>
+    <a href="#home" class="logo">Dzikra.</a>
 
-        <div class="logo">Dzikra.</div>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#about">Biodata</a>
+      <a href="#hobi">Hobi</a>
+      <button class="theme-btn" id="themeBtn"
+        aria-label="Ganti tema">🌙</button>
+    </div>
+  </nav>
 
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#biodata">Biodata</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#education">Pendidikan</a></li>
-            <li><a href="#hobby">Hobi</a></li>
-            <li><a href="#contact">Kontak</a></li>
-        </ul>
+  <!-- HALAMAN UTAMA -->
+  <header class="hero" id="home">
+    <div class="hero-text">
+      <span class="badge">✨ Welcome to My Personal Website</span>
 
-        <div class="nav-buttons">
-            <button class="theme-btn" id="themeBtn">🌙</button>
-            <button class="menu-btn" id="menuBtn">☰</button>
+      <h1>Halo, aku <span>Dzikra Rifqi Radifan</span>!</h1>
+
+      <p>
+        Aku adalah seorang pelajar yang memiliki semangat
+        untuk terus berkembang. Aku menyukai olahraga,
+        terutama gym, dan mempunyai cita-cita menjadi
+        atlet voli profesional.
+      </p>
+
+      <a href="#about" class="btn">Kenali Aku →</a>
+    </div>
+
+    <div class="profile-frame">
+      <!-- Ganti URL dengan foto milikmu -->
+      <img
+        src="https://placehold.co/400x500/e8e0ff/7048e8?text=Dzikra"
+        alt="Foto profil Dzikra"
+      >
+    </div>
+  </header>
+
+  <!-- BIODATA DIRI -->
+  <section id="about">
+    <div class="section-title reveal">
+      <h2>Tentang Diriku</h2>
+      <p>Yuk, kenali aku lebih dekat!</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="card reveal">
+        <h3>👋 Perkenalan</h3>
+
+        <p class="about-text">
+          Halo! Perkenalkan, namaku Dzikra Rifqi Radifan,
+          biasa dipanggil Dzikra. Aku bersekolah di SMA
+          Negeri 19 Bandung. Aku senang melakukan aktivitas
+          olahraga dan gym untuk mengembangkan kemampuan
+          serta kedisiplinan diri. Aku juga memiliki impian
+          untuk menjadi atlet voli dan berusaha meraihnya
+          dengan latihan serta kerja keras.
+        </p>
+      </div>
+
+      <div class="card reveal">
+        <h3>📋 Biodata Lengkap</h3>
+
+        <div class="info-row">
+          <span>Nama Lengkap</span>
+          <span>Dzikra Rifqi Radifan</span>
         </div>
 
-    </nav>
-
-
-    <!-- =========================
-         HERO
-    ========================== -->
-    <section class="hero" id="home">
-
-        <div class="hero-container">
-
-            <div class="hero-text reveal">
-
-                <h4>Welcome to My Website 👋</h4>
-
-                <h1>
-                    Dzikra Rifqi Radifan
-                </h1>
-
-                <h2>
-                    I'm a <span id="typing"></span>
-                </h2>
-
-                <p>
-                    Selamat datang di website biodata pribadi saya.
-                    Di sini kamu bisa mengenal saya lebih dekat,
-                    mulai dari biodata, pendidikan, hobi, hingga cita-cita saya.
-                </p>
-
-                <a href="#biodata" class="btn">
-                    Kenal Saya
-                </a>
-
-            </div>
-
-            <div class="profile-container reveal">
-
-                <!-- Ganti URL gambar di bawah dengan foto kamu -->
-                <img
-                    src="https://via.placeholder.com/320"
-                    alt="Foto Profil Dzikra"
-                    class="profile"
-                >
-
-            </div>
-
+        <div class="info-row">
+          <span>Nama Panggilan</span>
+          <span>Dzikra</span>
         </div>
 
-    </section>
-
-
-    <!-- =========================
-         BIODATA
-    ========================== -->
-    <section class="biodata" id="biodata">
-
-        <div class="section-title reveal">
-            <h2>Biodata Saya</h2>
-            <p>Informasi singkat mengenai diri saya</p>
+        <div class="info-row">
+          <span>Tempat Lahir</span>
+          <span>Bandung</span>
         </div>
 
-        <div class="bio-grid">
-
-            <div class="bio-card reveal">
-                <div class="bio-icon">👤</div>
-                <div>
-                    <h4>Nama Lengkap</h4>
-                    <p>Dzikra Rifqi Radifan</p>
-                </div>
-            </div>
-
-            <div class="bio-card reveal">
-                <div class="bio-icon">🎂</div>
-                <div>
-                    <h4>Tempat, Tanggal Lahir</h4>
-                    <p>Isi tanggal lahir</p>
-                </div>
-            </div>
-
-            <div class="bio-card reveal">
-                <div class="bio-icon">🏫</div>
-                <div>
-                    <h4>Sekolah</h4>
-                    <p>Nama Sekolah</p>
-                </div>
-            </div>
-
-            <div class="bio-card reveal">
-                <div class="bio-icon">📚</div>
-                <div>
-                    <h4>Kelas</h4>
-                    <p>Isi Kelas</p>
-                </div>
-            </div>
-
-            <div class="bio-card reveal">
-                <div class="bio-icon">📍</div>
-                <div>
-                    <h4>Alamat</h4>
-                    <p>Isi Alamat</p>
-                </div>
-            </div>
-
-            <div class="bio-card reveal">
-                <div class="bio-icon">🎯</div>
-                <div>
-                    <h4>Cita-Cita</h4>
-                    <p>Isi Cita-Cita</p>
-                </div>
-            </div>
-
+        <div class="info-row">
+          <span>Tanggal Lahir</span>
+          <span>15 Oktober 2010</span>
         </div>
 
-    </section>
-
-
-    <!-- =========================
-         ABOUT
-    ========================== -->
-    <section id="about">
-
-        <div class="section-title reveal">
-            <h2>Tentang Saya</h2>
-            <p>Mari mengenal saya lebih dekat</p>
+        <div class="info-row">
+          <span>Sekolah</span>
+          <span>SMA Negeri 19 Bandung</span>
         </div>
 
-        <div class="about-container reveal">
-
-            <p class="about-text">
-                Halo! Nama saya <b>Dzikra Rifqi Radifan</b>.
-                Saya adalah seorang pelajar yang memiliki semangat
-                untuk belajar dan mencoba berbagai hal baru.
-                Saya tertarik dengan teknologi, dunia digital,
-                dan berbagai aktivitas kreatif.
-                Saya ingin terus mengembangkan kemampuan saya
-                dan menjadi pribadi yang lebih baik setiap harinya.
-            </p>
-
+        <div class="info-row">
+          <span>Hobi</span>
+          <span>Olahraga / Gym</span>
         </div>
 
-    </section>
-
-
-    <!-- =========================
-         EDUCATION
-    ========================== -->
-    <section id="education">
-
-        <div class="section-title reveal">
-            <h2>Pendidikan</h2>
-            <p>Perjalanan pendidikan saya</p>
+        <div class="info-row">
+          <span>Cita-Cita</span>
+          <span>Atlet Voli</span>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="education-container">
+  <!-- HOBI -->
+  <section id="hobi">
+    <div class="section-title reveal">
+      <h2>Hobi Favoritku</h2>
+      <p>Kegiatan yang aku sukai dan ingin terus kembangkan.</p>
+    </div>
 
-            <div class="education-card reveal">
+    <div class="hobby-grid">
+      <div class="card hobby-card reveal">
+        <div class="hobby-icon">🏋️</div>
+        <h3>Gym</h3>
+        <p>
+          Mengembangkan kekuatan, kebugaran, dan
+          kedisiplinan melalui latihan yang teratur.
+        </p>
+      </div>
 
-                <span>2024 - Sekarang</span>
+      <div class="card hobby-card reveal">
+        <div class="hobby-icon">🏐</div>
+        <h3>Bermain Voli</h3>
+        <p>
+          Melatih kerja sama tim, teknik permainan,
+          dan semangat berkompetisi.
+        </p>
+      </div>
 
-                <h3>Sekolah Saat Ini</h3>
+      <div class="card hobby-card reveal">
+        <div class="hobby-icon">🏃</div>
+        <h3>Olahraga</h3>
+        <p>
+          Menjaga kebugaran tubuh dan membangun
+          kebiasaan hidup aktif.
+        </p>
+      </div>
+    </div>
+  </section>
 
-                <p>
-                    Nama sekolah kamu
-                </p>
+  <!-- CITA-CITA -->
+  <section id="cita-cita">
+    <div class="dream-card reveal">
+      <div class="dream-icon">🏐</div>
 
-            </div>
+      <h2>My Dream: Atlet Voli</h2>
 
-            <div class="education-card reveal">
+      <p>
+        Cita-citaku adalah menjadi atlet voli yang
+        berprestasi. Aku ingin terus belajar, berlatih,
+        meningkatkan kemampuan, dan membangun kerja sama
+        tim yang baik. Aku percaya bahwa dengan disiplin,
+        semangat, dan kerja keras, aku bisa semakin dekat
+        dengan impianku serta membanggakan orang tua.
+      </p>
+    </div>
+  </section>
 
-                <span>2021 - 2024</span>
+  <!-- KONTAK -->
+  <section id="kontak">
+    <div class="section-title reveal">
+      <h2>Terima Kasih!</h2>
+      <p>Senang bisa berbagi sedikit cerita tentang diriku.</p>
+    </div>
 
-                <h3>SMP</h3>
+    <div class="card contact-card reveal">
+      <h3>Keep Learning, Keep Growing!</h3>
 
-                <p>
-                    Nama SMP kamu
-                </p>
+      <p>
+        Setiap langkah kecil adalah bagian dari perjalanan
+        menuju masa depan yang lebih baik.
+      </p>
 
-            </div>
+      <button class="btn" id="helloBtn">
+        👋 Sapa Aku
+      </button>
+    </div>
+  </section>
 
-            <div class="education-card reveal">
+  <!-- FOOTER -->
+  <footer>
+    <p>© <span id="year"></span> Dzikra Rifqi Radifan</p>
+    <p>Made with ❤️ and passion</p>
+  </footer>
 
-                <span>2015 - 2021</span>
+  <script>
+    // Tombol tema terang dan gelap
+    const themeBtn = document.getElementById("themeBtn");
 
-                <h3>SD</h3>
+    themeBtn.addEventListener("click", function () {
+      document.body.classList.toggle("dark");
 
-                <p>
-                    Nama SD kamu
-                </p>
+      const isDark =
+        document.body.classList.contains("dark");
 
-            </div>
+      themeBtn.textContent = isDark ? "☀️" : "🌙";
+    });
 
-        </div>
+    // Tombol sapaan
+    document.getElementById("helloBtn")
+      .addEventListener("click", function () {
+        alert(
+          "Halo! Senang bertemu denganmu. " +
+          "Terus semangat meraih cita-cita! 🏐"
+        );
+      });
 
-    </section>
+    // Tahun otomatis di footer
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
 
+    // Animasi saat halaman digulir
+    const revealElements =
+      document.querySelectorAll(".reveal");
 
-    <!-- =========================
-         HOBBY
-    ========================== -->
-    <section class="hobby-section" id="hobby">
+    function revealOnScroll() {
+      revealElements.forEach(function (element) {
+        const position =
+          element.getBoundingClientRect().top;
 
-        <div class="section-title reveal">
-            <h2>Hobi & Minat</h2>
-            <p>Beberapa hal yang saya sukai</p>
-        </div>
+        if (position < window.innerHeight - 50) {
+          element.classList.add("show");
+        }
+      });
+    }
 
-        <div class="hobby-grid">
+    window.addEventListener("scroll", revealOnScroll);
+    window.addEventListener("load", revealOnScroll);
 
-            <div class="hobby-card reveal">
-                <span class="emoji">📚</span>
-                <h3>Membaca</h3>
-                <p>Membaca buku dan mencari pengetahuan baru.</p>
-            </div>
+    revealOnScroll();
+  </script>
 
-            <div class="hobby-card reveal">
-                <span class="emoji">💻</span>
-                <h3>Teknologi</h3>
-                <p>Tertarik mempelajari teknologi dan website.</p>
-            </div>
-
-            <div class="hobby-card reveal">
-                <span class="emoji">🎮</span>
-                <h3>Gaming</h3>
-                <p>Bermain game di waktu luang.</p>
-            </div>
-
-            <div class="hobby-card rev
+</body>
+    </html>
