@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil - Dzikra Rifqi Radifan</title>
+    <title>Website Profil - Dzikra Rifqi Radifan</title>
     <style>
-        /* RESET & BASE STYLES */
+        /* --- RESET & BASIC STYLES --- */
         * {
             margin: 0;
             padding: 0;
@@ -14,205 +14,199 @@
         }
 
         body {
-            background-color: #f4f7f6;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        /* CONTAINER & CARD */
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             padding: 20px;
         }
 
-        .profile-card {
-            background: #ffffff;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
-
-        /* HEADER SECTION */
-        .profile-header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: #ffffff;
+        /* --- CARD CONTAINER --- */
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            width: 100%;
+            max-width: 500px;
+            padding: 40px 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
             text-align: center;
-            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .avatar-placeholder {
-            width: 120px;
-            height: 120px;
-            background-color: #ffffff;
-            color: #1e3c72;
+        /* Accent Top Line */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #3b82f6, #10b981);
+        }
+
+        /* --- PROFILE AVATAR --- */
+        .avatar {
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6, #10b981);
             display: flex;
-            align-items: center;
             justify-content: center;
-            font-size: 48px;
+            align-items: center;
+            margin: 0 auto 20px;
+            font-size: 40px;
             font-weight: bold;
-            margin: 0 auto 15px;
-            border: 4px solid rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
         }
 
-        .profile-header h1 {
-            font-size: 28px;
+        /* --- HEADER --- */
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffffff;
             margin-bottom: 5px;
         }
 
-        .profile-header p {
-            font-size: 16px;
-            opacity: 0.9;
+        p.subtitle {
+            font-size: 14px;
+            color: #94a3b8;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
-        /* BODY SECTION */
-        .profile-body {
-            padding: 30px;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
+        /* --- INFO LIST --- */
+        .info-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            text-align: left;
             margin-bottom: 30px;
         }
 
         .info-item {
-            background: #f8fafc;
-            padding: 15px 20px;
-            border-radius: 10px;
-            border-left: 4px solid #2a5298;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 12px 18px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.2s, background 0.2s;
         }
 
-        .info-item h3 {
+        .info-item:hover {
+            transform: translateX(5px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .label {
+            font-size: 13px;
+            color: #94a3b8;
+            font-weight: 500;
+        }
+
+        .value {
             font-size: 14px;
-            color: #666;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .info-item p {
-            font-size: 18px;
+            color: #f1f5f9;
             font-weight: 600;
-            color: #1e3c72;
         }
 
-        /* INTERACTIVE BUTTON & MOTIVATION SECTION */
-        .action-section {
-            text-align: center;
-            border-top: 1px solid #eeeeee;
-            padding-top: 20px;
-        }
-
-        .btn-quote {
-            background-color: #2a5298;
-            color: #ffffff;
+        /* --- INTERACTIVE BUTTON --- */
+        .btn {
+            background: linear-gradient(90deg, #3b82f6, #2563eb);
+            color: white;
             border: none;
             padding: 12px 24px;
-            font-size: 16px;
-            font-weight: 600;
             border-radius: 30px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.1s ease;
-        }
-
-        .btn-quote:hover {
-            background-color: #1e3c72;
-            transform: translateY(-2px);
-        }
-
-        .btn-quote:active {
-            transform: translateY(0);
-        }
-
-        .quote-box {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #eef2f5;
-            border-radius: 8px;
-            font-style: italic;
-            color: #444;
-            display: none; /* Disembunyikan awalnya, muncul via JavaScript */
-        }
-
-        /* FOOTER */
-        .footer {
-            text-align: center;
-            margin-top: 20px;
             font-size: 14px;
-            color: #888;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+        }
+
+        /* --- POPUP MESSAGE --- */
+        .message {
+            margin-top: 15px;
+            font-size: 13px;
+            color: #10b981;
+            min-height: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .message.show {
+            opacity: 1;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="profile-card">
-            <!-- Header Profil -->
-            <div class="profile-header">
-                <div class="avatar-placeholder">D</div>
-                <h1>Dzikra Rifqi Radifan</h1>
-                <p>Calon Atlet Masa Depan 🏆</p>
+    <div class="card">
+        <!-- Avatar Inisial Nama -->
+        <div class="avatar" id="avatar">DR</div>
+
+        <!-- Header -->
+        <h1 id="nama">Dzikra Rifqi Radifan</h1>
+        <p class="subtitle">Calon Atlet Masa Depan</p>
+
+        <!-- Informasi Profil -->
+        <div class="info-container">
+            <div class="info-item">
+                <span class="label">Umur</span>
+                <span class="value">16 Tahun</span>
             </div>
-
-            <!-- Detail Informasi Profil -->
-            <div class="profile-body">
-                <div class="info-grid">
-                    <div class="info-item">
-                        <h3>Umur</h3>
-                        <p>16 Tahun</p>
-                    </div>
-                    <div class="info-item">
-                        <h3>Tempat, Tanggal Lahir</h3>
-                        <p>Bandung, 15 Oktober 2010</p>
-                    </div>
-                    <div class="info-item">
-                        <h3>Hobi</h3>
-                        <p>Olahraga ⚽🏀🏃</p>
-                    </div>
-                    <div class="info-item">
-                        <h3>Cita-cita</h3>
-                        <p>Atlet Profesional 🥇</p>
-                    </div>
-                </div>
-
-                <!-- Bagian Interaktif (JavaScript) -->
-                <div class="action-section">
-                    <button class="btn-quote" onclick="tampilkanMotivasi()">Ambil Motivasi Hari Ini</button>
-                    <div class="quote-box" id="quoteDisplay"></div>
-                </div>
+            <div class="info-item">
+                <span class="label">Tempat, Tgl Lahir</span>
+                <span class="value">Bandung, 15 Oktober 2010</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Hobi</span>
+                <span class="value">Olahraga ⚽🏀</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Cita-cita</span>
+                <span class="value">Atlet 🏆</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Alamat</span>
+                <span class="value">Kp. Lebak Siuh No. 123</span>
             </div>
         </div>
 
-        <div class="footer">
-            &copy; Profil Web Dzikra Rifqi Radifan
-        </div>
+        <!-- Tombol Interaktif -->
+        <button class="btn" onclick="sapaPengunjung()">Kirim Semangat!</button>
+        <div class="message" id="pesan"></div>
     </div>
 
-    <!-- JAVASCRIPT LOGIC -->
+    <!-- JAVASCRIPT -->
     <script>
-        const motivasiList = [
-            '"Kerja keras mengalahkan bakat ketika bakat tidak bekerja keras."',
-            '"Kesuksesan berawal dari keputusan untuk mencoba dan konsistensi untuk latihan."',
-            '"Setiap tetes keringat hari ini adalah langkah menuju medali esok hari."',
-            '"Jangan menyerah saat lelah, menyerahlah saat kamu sudah selesai."',
-            '"Seorang atlet sejati fokus pada proses dan pantang menyerah."'
-        ];
+        function sapaPengunjung() {
+            const pesanElement = document.getElementById("pesan");
+            pesanElement.innerText = "🔥 Terima kasih! Terus berjuang untuk meraih cita-cita menjadi atlet hebat!";
+            pesanElement.classList.add("show");
 
-        function tampilkanMotivasi() {
-            const quoteBox = document.getElementById('quoteDisplay');
-            
-            // Mengambil motivasi acak dari list
-            const randomIndex = Math.floor(Math.random() * motivasiList.length);
-            const quotePilihan = motivasiList[randomIndex];
-
-            // Menampilkan motivasi di layar
-            quoteBox.innerText = quotePilihan;
-            quoteBox.style.display = 'block';
+            // Efek interaktif tombol
+            setTimeout(() => {
+                pesanElement.classList.remove("show");
+            }, 4000);
         }
+
+        // Fitur log di browser console
+        console.log("Website Profil Dzikra Rifqi Radifan siap ditampilkan.");
     </script>
+
 </body>
-                          </html>
+</html>
