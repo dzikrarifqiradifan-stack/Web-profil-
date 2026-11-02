@@ -1,212 +1,876 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Profil - Dzikra Rifqi Radifan</title>
+    <title>Dzikra Rifqi Radifan - Prospective Professional Athlete</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        amberNeon: '#f59e0b',
+                        orangeNeon: '#ff5500',
+                        cyanNeon: '#06b6d4',
+                        emeraldNeon: '#10b981',
+                        darkBg: '#090d16',
+                        darkCard: '#111827'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Teko', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Teko:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* --- RESET & BASIC STYLES --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
         body {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            color: #f8fafc;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            font-family: 'Inter', sans-serif;
+            background-color: #090d16;
+            color: #f3f4f6;
+            overflow-x: hidden;
         }
 
-        /* --- CARD CONTAINER --- */
-        .card {
-            background: rgba(255, 255, 255, 0.05);
+        .font-display {
+            font-family: 'Teko', sans-serif;
+        }
+
+        /* Glassmorphism Styles */
+        .glass-panel {
+            background: rgba(17, 24, 39, 0.75);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            background: rgba(31, 41, 55, 0.5);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            width: 100%;
-            max-width: 500px;
-            padding: 40px 30px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Accent Top Line */
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, #3b82f6, #10b981);
+        .glass-card:hover {
+            border-color: rgba(245, 158, 11, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.1);
         }
 
-        /* --- PROFILE AVATAR --- */
-        .avatar {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #3b82f6, #10b981);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 auto 20px;
-            font-size: 40px;
-            font-weight: bold;
-            color: #ffffff;
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #090d16;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ff5500;
+            border-radius: 4px;
         }
 
-        /* --- HEADER --- */
-        h1 {
-            font-size: 24px;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 5px;
+        /* Animated Grid Overlay for Sports Aesthetic */
+        .sports-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
         }
 
-        p.subtitle {
-            font-size: 14px;
-            color: #94a3b8;
-            margin-bottom: 25px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        /* --- INFO LIST --- */
-        .info-container {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            text-align: left;
-            margin-bottom: 30px;
-        }
-
-        .info-item {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 12px 18px;
-            border-radius: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: transform 0.2s, background 0.2s;
-        }
-
-        .info-item:hover {
-            transform: translateX(5px);
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .label {
-            font-size: 13px;
-            color: #94a3b8;
-            font-weight: 500;
-        }
-
-        .value {
-            font-size: 14px;
-            color: #f1f5f9;
-            font-weight: 600;
-        }
-
-        /* --- INTERACTIVE BUTTON --- */
-        .btn {
-            background: linear-gradient(90deg, #3b82f6, #2563eb);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 30px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
-            transition: all 0.3s ease;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
-        }
-
-        /* --- POPUP MESSAGE --- */
-        .message {
-            margin-top: 15px;
-            font-size: 13px;
-            color: #10b981;
-            min-height: 20px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .message.show {
-            opacity: 1;
+        /* Text Stroke Effect */
+        .text-stroke {
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+            color: transparent;
         }
     </style>
 </head>
-<body>
+<body class="relative min-h-screen selection:bg-orangeNeon selection:text-white sports-grid">
 
-    <div class="card">
-        <!-- Avatar Inisial Nama -->
-        <div class="avatar" id="avatar">DR</div>
+    <!-- Dynamic Particle & Mesh Background Canvas -->
+    <canvas id="bg-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
 
-        <!-- Header -->
-        <h1 id="nama">Dzikra Rifqi Radifan</h1>
-        <p class="subtitle">Calon Atlet Masa Depan</p>
+    <!-- Header / Navigation Bar -->
+    <header class="fixed top-0 left-0 w-full z-50 px-4 sm:px-8 py-4">
+        <nav class="max-w-6xl mx-auto glass-panel rounded-2xl px-6 py-3 flex items-center justify-between shadow-2xl">
+            <!-- Brand Logo -->
+            <a href="#hero" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-orangeNeon to-amberNeon flex items-center justify-center text-slate-950 font-black font-display text-2xl tracking-wider shadow-lg group-hover:scale-105 transition-transform">
+                    DRR
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-extrabold text-white text-sm tracking-wide group-hover:text-amberNeon transition-colors">Dzikra Rifqi</span>
+                    <span class="text-[10px] tracking-widest uppercase text-amber-400/90 font-semibold">Future Athlete</span>
+                </div>
+            </a>
 
-        <!-- Informasi Profil -->
-        <div class="info-container">
-            <div class="info-item">
-                <span class="label">Umur</span>
-                <span class="value">16 Tahun</span>
+            <!-- Desktop Navigation Menu -->
+            <div class="hidden md:flex items-center space-x-8 font-semibold text-xs tracking-wider uppercase">
+                <a href="#biodata" class="hover:text-orangeNeon transition-colors">Biodata</a>
+                <a href="#skills" class="hover:text-orangeNeon transition-colors">Skill & Atribut</a>
+                <a href="#activities" class="hover:text-orangeNeon transition-colors">Aktivitas</a>
+                <a href="#timeline" class="hover:text-orangeNeon transition-colors">Target Karier</a>
+                <a href="#contact" class="hover:text-orangeNeon transition-colors">Kontak</a>
             </div>
-            <div class="info-item">
-                <span class="label">Tempat, Tgl Lahir</span>
-                <span class="value">Bandung, 15 Oktober 2010</span>
+
+            <!-- CTA & Mobile Toggle -->
+            <div class="flex items-center gap-3">
+                <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-orangeNeon to-amberNeon text-slate-950 font-bold text-xs uppercase tracking-wider transition-all shadow-md hover:shadow-orangeNeon/30 hover:scale-105">
+                    <i class="fas fa-paper-plane text-xs"></i>
+                    <span>Hubungi</span>
+                </a>
+                
+                <button id="mobile-menu-btn" aria-label="Toggle Mobile Menu" class="md:hidden p-2.5 rounded-xl bg-slate-800 text-slate-200 hover:text-white">
+                    <i class="fas fa-bars text-lg"></i>
+                </button>
             </div>
-            <div class="info-item">
-                <span class="label">Hobi</span>
-                <span class="value">Olahraga ⚽🏀</span>
+        </nav>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden mt-3 max-w-6xl mx-auto glass-panel rounded-2xl p-5 shadow-2xl flex flex-col space-y-4 font-semibold text-sm uppercase tracking-wider">
+            <a href="#biodata" class="mobile-link hover:text-orangeNeon py-1">Biodata</a>
+            <a href="#skills" class="mobile-link hover:text-orangeNeon py-1">Skill & Atribut</a>
+            <a href="#activities" class="mobile-link hover:text-orangeNeon py-1">Aktivitas</a>
+            <a href="#timeline" class="mobile-link hover:text-orangeNeon py-1">Target Karier</a>
+            <a href="#contact" class="mobile-link hover:text-orangeNeon py-1">Kontak</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen pt-32 pb-20 px-4 sm:px-8 flex items-center justify-center relative z-10">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Left Headline Text -->
+            <div class="lg:col-span-7 text-center lg:text-left">
+                <span class="px-4 py-1.5 rounded-full text-xs font-bold bg-orangeNeon/10 text-orangeNeon border border-orangeNeon/30 mb-6 inline-flex items-center gap-2 uppercase tracking-widest">
+                    <i class="fas fa-bolt text-amber-400"></i> Calon Atlet Profesional Indonesia
+                </span>
+
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-none mb-6 uppercase">
+                    <span class="block text-white">Dzikra Rifqi</span>
+                    <span class="bg-gradient-to-r from-orangeNeon via-amberNeon to-cyanNeon bg-clip-text text-transparent">
+                        Radifan
+                    </span>
+                </h1>
+
+                <p class="text-base sm:text-lg text-slate-300 max-w-xl mx-auto lg:mx-0 mb-8 font-light leading-relaxed">
+                    Pemuda berumur <span class="text-amber-400 font-bold">16 tahun</span> asal Bandung dengan komitmen pantang menyerah, stamina tinggi, dan dedikasi penuh untuk menjadi <span class="text-cyanNeon font-bold">Atlet Olahraga Profesional</span> puncak.
+                </p>
+
+                <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-10">
+                    <a href="#biodata" class="px-8 py-4 rounded-xl bg-gradient-to-r from-orangeNeon to-amberNeon text-slate-950 font-black text-xs uppercase tracking-wider transition-all shadow-xl hover:shadow-orangeNeon/40 hover:scale-105 flex items-center gap-2">
+                        <i class="fas fa-user text-xs"></i>
+                        <span>Lihat Profil Complete</span>
+                    </a>
+                    <a href="#contact" class="px-8 py-4 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-wider transition-all border border-slate-700 flex items-center gap-2">
+                        <i class="fas fa-running text-xs text-amber-400"></i>
+                        <span>Ajak Sparring / Tanding</span>
+                    </a>
+                </div>
+
+                <!-- Live Quick Stats Counter -->
+                <div class="grid grid-cols-3 gap-4 max-w-md mx-auto lg:mx-0">
+                    <div class="glass-card p-3 rounded-xl text-center">
+                        <h4 class="text-2xl sm:text-3xl font-black text-amber-400 font-display" data-target="100">%</h4>
+                        <p class="text-[10px] text-slate-400 uppercase font-semibold">Komitmen & Disiplin</p>
+                    </div>
+                    <div class="glass-card p-3 rounded-xl text-center">
+                        <h4 class="text-2xl sm:text-3xl font-black text-cyanNeon font-display" data-target="16">0</h4>
+                        <p class="text-[10px] text-slate-400 uppercase font-semibold">Tahun Usia Muda</p>
+                    </div>
+                    <div class="glass-card p-3 rounded-xl text-center">
+                        <h4 class="text-2xl sm:text-3xl font-black text-emeraldNeon font-display" data-target="365">+</h4>
+                        <p class="text-[10px] text-slate-400 uppercase font-semibold">Hari Fokus Berlatih</p>
+                    </div>
+                </div>
             </div>
-            <div class="info-item">
-                <span class="label">Cita-cita</span>
-                <span class="value">Atlet 🏆</span>
+
+            <!-- Right Athletic FUT/HUD Style Card -->
+            <div class="lg:col-span-5">
+                <div class="glass-panel p-6 rounded-3xl relative overflow-hidden group shadow-2xl border-amber-500/20">
+                    <!-- Glow Accents -->
+                    <div class="absolute -top-12 -right-12 w-40 h-40 bg-orangeNeon/20 rounded-full blur-3xl pointer-events-none"></div>
+                    <div class="absolute -bottom-12 -left-12 w-40 h-40 bg-cyanNeon/20 rounded-full blur-3xl pointer-events-none"></div>
+
+                    <!-- Player Card Top Header -->
+                    <div class="flex items-center justify-between border-b border-slate-700/60 pb-4 mb-6">
+                        <div class="flex items-center gap-3">
+                            <span class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center font-display text-3xl font-bold text-amber-400">99</span>
+                            <div>
+                                <h3 class="text-base font-black text-white leading-tight">ATHLETE CARD</h3>
+                                <p class="text-[10px] text-slate-400 tracking-widest uppercase">ID: DRR-BDG-2010</p>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-extrabold uppercase tracking-wider flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                            ACTIVE TRAINING
+                        </span>
+                    </div>
+
+                    <!-- Player Avatar Graphic -->
+                    <div class="aspect-square rounded-2xl bg-gradient-to-b from-slate-800 to-slate-900 border border-slate-700/80 flex flex-col items-center justify-center p-6 relative overflow-hidden mb-6">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-10"></div>
+                        <i class="fas fa-running text-8xl text-amber-400/90 mb-2 z-0 group-hover:scale-110 transition-transform duration-500"></i>
+                        <div class="z-20 text-center">
+                            <h4 class="text-2xl font-black text-white font-display tracking-wider">DZIKRA RIFQI RADIFAN</h4>
+                            <p class="text-xs text-cyanNeon font-bold uppercase tracking-widest">Bandung, Jawa Barat</p>
+                        </div>
+                    </div>
+
+                    <!-- HUD Quick Stats Attributes -->
+                    <div class="grid grid-cols-3 gap-2 text-center">
+                        <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800">
+                            <span class="text-[10px] text-slate-400 block font-semibold">PAC (Speed)</span>
+                            <span class="text-lg font-bold text-amber-400 font-display">94</span>
+                        </div>
+                        <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800">
+                            <span class="text-[10px] text-slate-400 block font-semibold">STM (Stamina)</span>
+                            <span class="text-lg font-bold text-orangeNeon font-display">96</span>
+                        </div>
+                        <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800">
+                            <span class="text-[10px] text-slate-400 block font-semibold">DRI (Agility)</span>
+                            <span class="text-lg font-bold text-cyanNeon font-display">91</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="info-item">
-                <span class="label">Alamat</span>
-                <span class="value">Kp. Lebak Siuh No. 123</span>
+
+        </div>
+    </section>
+
+    <!-- Section Biodata / Card Detail -->
+    <section id="biodata" class="py-20 px-4 sm:px-8 relative z-10 bg-slate-950/80">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-orangeNeon mb-2 block">Informasi Personal</span>
+                <h2 class="text-3xl sm:text-5xl font-black text-white uppercase font-display">Biodata Lengkap</h2>
+                <div class="w-20 h-1.5 bg-gradient-to-r from-orangeNeon to-amberNeon mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Card 1: Nama Lengkap -->
+                <div class="glass-card p-6 rounded-2xl flex items-start gap-4">
+                    <div class="w-14 h-14 rounded-2xl bg-orangeNeon/10 border border-orangeNeon/30 flex items-center justify-center text-orangeNeon text-2xl shrink-0">
+                        <i class="fas fa-id-badge"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Nama Lengkap</span>
+                        <h3 class="text-lg font-bold text-white mt-1">Dzikra Rifqi Radifan</h3>
+                        <p class="text-xs text-slate-400 mt-1">Inisial: DRR</p>
+                    </div>
+                </div>
+
+                <!-- Card 2: Umur -->
+                <div class="glass-card p-6 rounded-2xl flex items-start gap-4">
+                    <div class="w-14 h-14 rounded-2xl bg-amberNeon/10 border border-amberNeon/30 flex items-center justify-center text-amberNeon text-2xl shrink-0">
+                        <i class="fas fa-user-clock"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Usia</span>
+                        <h3 class="text-lg font-bold text-white mt-1">16 Tahun</h3>
+                        <p class="text-xs text-slate-400 mt-1">Kategori Usia Atlet Muda</p>
+                    </div>
+                </div>
+
+                <!-- Card 3: Tempat & Tanggal Lahir -->
+                <div class="glass-card p-6 rounded-2xl flex items-start gap-4">
+                    <div class="w-14 h-14 rounded-2xl bg-cyanNeon/10 border border-cyanNeon/30 flex items-center justify-center text-cyanNeon text-2xl shrink-0">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Tempat, Tanggal Lahir</span>
+                        <h3 class="text-lg font-bold text-white mt-1">Bandung, 15 Okt 2010</h3>
+                        <p class="text-xs text-slate-400 mt-1">Jawa Barat, Indonesia</p>
+                    </div>
+                </div>
+
+                <!-- Card 4: Hobi -->
+                <div class="glass-card p-6 rounded-2xl flex items-start gap-4">
+                    <div class="w-14 h-14 rounded-2xl bg-emeraldNeon/10 border border-emeraldNeon/30 flex items-center justify-center text-emeraldNeon text-2xl shrink-0">
+                        <i class="fas fa-volleyball-ball"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Hobi Utama</span>
+                        <h3 class="text-lg font-bold text-white mt-1">Olahraga & Fitnes</h3>
+                        <p class="text-xs text-slate-400 mt-1">Latihan fisik, game strategi, & stamina</p>
+                    </div>
+                </div>
+
+                <!-- Card 5: Cita-cita -->
+                <div class="glass-card p-6 rounded-2xl flex items-start gap-4 md:col-span-2 lg:col-span-2 border-amberNeon/30 bg-amberNeon/5">
+                    <div class="w-14 h-14 rounded-2xl bg-amberNeon/20 border border-amberNeon/40 flex items-center justify-center text-amberNeon text-2xl shrink-0">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs text-amber-400 font-bold uppercase tracking-wider">Cita-Cita Utama</span>
+                        <h3 class="text-xl font-extrabold text-white mt-1">Atlet Olahraga Profesional</h3>
+                        <p class="text-xs text-slate-300 mt-1">Bertekad menembus tingkat kejuaraan nasional maupun internasional dengan kerja keras, disiplin tinggi, dan daya juang maksimal.</p>
+                    </div>
+                </div>
+
+                <!-- Card 6: Alamat Tempat Tinggal -->
+                <div class="glass-card p-6 rounded-2xl flex items-start gap-4 md:col-span-2 lg:col-span-3">
+                    <div class="w-14 h-14 rounded-2xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400 text-2xl shrink-0">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Alamat Domisili</span>
+                        <h3 class="text-lg font-bold text-white mt-1">Kp. Lebak Siuh No. 123</h3>
+                        <p class="text-xs text-slate-400 mt-0.5">Kota / Kabupaten Bandung, Jawa Barat, Indonesia</p>
+                    </div>
+                </div>
+
             </div>
         </div>
+    </section>
 
-        <!-- Tombol Interaktif -->
-        <button class="btn" onclick="sapaPengunjung()">Kirim Semangat!</button>
-        <div class="message" id="pesan"></div>
-    </div>
+    <!-- Section Skill & Atribut Olahraga -->
+    <section id="skills" class="py-20 px-4 sm:px-8 relative z-10">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-cyanNeon mb-2 block">Kinerja & Fisik</span>
+                <h2 class="text-3xl sm:text-5xl font-black text-white uppercase font-display">Atribut & Skill Atlet</h2>
+                <div class="w-20 h-1.5 bg-gradient-to-r from-cyanNeon to-amberNeon mx-auto mt-3 rounded-full"></div>
+            </div>
 
-    <!-- JAVASCRIPT -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                
+                <!-- Animated Skill Bars -->
+                <div class="glass-panel p-6 sm:p-8 rounded-3xl space-y-6">
+                    <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                        <i class="fas fa-heartbeat text-orangeNeon"></i> Evaluasi Performa Fisik
+                    </h3>
+
+                    <!-- Stamina & Daya Tahan -->
+                    <div>
+                        <div class="flex justify-between text-xs font-bold uppercase tracking-wider mb-2">
+                            <span class="text-slate-200">Stamina & Daya Tahan Fisik</span>
+                            <span class="text-amber-400">96%</span>
+                        </div>
+                        <div class="w-full bg-slate-800 rounded-full h-3 overflow-hidden p-0.5">
+                            <div class="bg-gradient-to-r from-orangeNeon to-amberNeon h-full rounded-full transition-all duration-1000" style="width: 96%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Kecepatan & Kelincahan -->
+                    <div>
+                        <div class="flex justify-between text-xs font-bold uppercase tracking-wider mb-2">
+                            <span class="text-slate-200">Kecepatan (Sprint Acceleration)</span>
+                            <span class="text-cyanNeon">94%</span>
+                        </div>
+                        <div class="w-full bg-slate-800 rounded-full h-3 overflow-hidden p-0.5">
+                            <div class="bg-gradient-to-r from-cyanNeon to-blue-500 h-full rounded-full transition-all duration-1000" style="width: 94%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Agility & Respon Kelincahan -->
+                    <div>
+                        <div class="flex justify-between text-xs font-bold uppercase tracking-wider mb-2">
+                            <span class="text-slate-200">Agility & Kelincahan Reaksi</span>
+                            <span class="text-emeraldNeon">91%</span>
+                        </div>
+                        <div class="w-full bg-slate-800 rounded-full h-3 overflow-hidden p-0.5">
+                            <div class="bg-gradient-to-r from-emeraldNeon to-teal-400 h-full rounded-full transition-all duration-1000" style="width: 91%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Kerja Sama Tim -->
+                    <div>
+                        <div class="flex justify-between text-xs font-bold uppercase tracking-wider mb-2">
+                            <span class="text-slate-200">Kerja Sama Tim & Komunikasi</span>
+                            <span class="text-amber-400">95%</span>
+                        </div>
+                        <div class="w-full bg-slate-800 rounded-full h-3 overflow-hidden p-0.5">
+                            <div class="bg-gradient-to-r from-amber-400 to-yellow-300 h-full rounded-full transition-all duration-1000" style="width: 95%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Disiplin & Etos Kerja -->
+                    <div>
+                        <div class="flex justify-between text-xs font-bold uppercase tracking-wider mb-2">
+                            <span class="text-slate-200">Disiplin & Mental Atlet</span>
+                            <span class="text-orangeNeon">98%</span>
+                        </div>
+                        <div class="w-full bg-slate-800 rounded-full h-3 overflow-hidden p-0.5">
+                            <div class="bg-gradient-to-r from-rose-500 to-orangeNeon h-full rounded-full transition-all duration-1000" style="width: 98%"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Strategic Core Strengths -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="glass-card p-6 rounded-2xl">
+                        <div class="w-12 h-12 rounded-xl bg-orangeNeon/10 border border-orangeNeon/30 text-orangeNeon flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-fire-alt"></i>
+                        </div>
+                        <h4 class="font-bold text-white text-base mb-1">Daya Juang Tinggi</h4>
+                        <p class="text-xs text-slate-400">Selalu memberikan performa 100% dari awal hingga akhir pertandingan.</p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl">
+                        <div class="w-12 h-12 rounded-xl bg-cyanNeon/10 border border-cyanNeon/30 text-cyanNeon flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4 class="font-bold text-white text-base mb-1">Fokus Taktis</h4>
+                        <p class="text-xs text-slate-400">Cepat dalam menyerap arahan pelatih dan mengeksekusi strategi lapangan.</p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl">
+                        <div class="w-12 h-12 rounded-xl bg-emeraldNeon/10 border border-emeraldNeon/30 text-emeraldNeon flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <h4 class="font-bold text-white text-base mb-1">Rutinitas Gym & Fisik</h4>
+                        <p class="text-xs text-slate-400">Menjaga kebugaran otot dan ketahanan tubuh secara konsisten setiap hari.</p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl">
+                        <div class="w-12 h-12 rounded-xl bg-amber-400/10 border border-amber-400/30 text-amber-400 flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-users-cog"></i>
+                        </div>
+                        <h4 class="font-bold text-white text-base mb-1">Adaptabilitas Cepat</h4>
+                        <p class="text-xs text-slate-400">Mudah beradaptasi dengan ritme tim baru maupun rekan tanding yang bervariasi.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Galeri Aktivitas Olahraga -->
+    <section id="activities" class="py-20 px-4 sm:px-8 relative z-10 bg-slate-950/80">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-xs font-bold uppercase tracking-widest text-emeraldNeon mb-2 block">Dokumentasi & Galeri</span>
+                <h2 class="text-3xl sm:text-5xl font-black text-white uppercase font-display">Aktivitas Latihan & Tanding</h2>
+                <div class="w-20 h-1.5 bg-gradient-to-r from-emeraldNeon to-cyanNeon mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <!-- Filter Category Buttons -->
+            <div class="flex flex-wrap justify-center gap-3 mb-10">
+                <button class="filter-btn active px-5 py-2.5 rounded-xl bg-gradient-to-r from-orangeNeon to-amberNeon text-slate-950 font-bold text-xs uppercase tracking-wider shadow-lg" data-filter="all">Semua</button>
+                <button class="filter-btn px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs uppercase tracking-wider border border-slate-700" data-filter="latihan">Latihan Rutin</button>
+                <button class="filter-btn px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs uppercase tracking-wider border border-slate-700" data-filter="tanding">Pertandingan</button>
+                <button class="filter-btn px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs uppercase tracking-wider border border-slate-700" data-filter="fitness">Fisik & Fitnes</button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Card 1 -->
+                <div class="gallery-item latihan glass-card rounded-2xl overflow-hidden group">
+                    <div class="h-48 bg-slate-800 flex flex-col items-center justify-center p-6 text-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent z-10"></div>
+                        <i class="fas fa-running text-6xl text-amber-400 group-hover:scale-110 transition-transform"></i>
+                        <span class="absolute top-3 left-3 px-3 py-1 rounded-md bg-amber-400 text-slate-950 font-black text-[10px] uppercase z-20">Latihan Lapangan</span>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-white text-base">Sesi Akselerasi & Sprint Interval</h4>
+                        <p class="text-xs text-slate-400 mt-1">Latihan khusus membangun daya ledak otot dan kecepatan akselerasi pendek.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="gallery-item fitness glass-card rounded-2xl overflow-hidden group">
+                    <div class="h-48 bg-slate-800 flex flex-col items-center justify-center p-6 text-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent z-10"></div>
+                        <i class="fas fa-dumbbell text-6xl text-cyanNeon group-hover:scale-110 transition-transform"></i>
+                        <span class="absolute top-3 left-3 px-3 py-1 rounded-md bg-cyanNeon text-slate-950 font-black text-[10px] uppercase z-20">Fisik & Fitnes</span>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-white text-base">Strength Training & Core Stability</h4>
+                        <p class="text-xs text-slate-400 mt-1">Penguatan otot inti tubuh untuk keseimbangan saat kontak fisik di lapangan.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="gallery-item tanding glass-card rounded-2xl overflow-hidden group">
+                    <div class="h-48 bg-slate-800 flex flex-col items-center justify-center p-6 text-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent z-10"></div>
+                        <i class="fas fa-trophy text-6xl text-orangeNeon group-hover:scale-110 transition-transform"></i>
+                        <span class="absolute top-3 left-3 px-3 py-1 rounded-md bg-orangeNeon text-white font-black text-[10px] uppercase z-20">Match Day</span>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-white text-base">Uji Tanding Antar Klub Pelajar Bandung</h4>
+                        <p class="text-xs text-slate-400 mt-1">Mengasah mental bertanding di bawah tekanan kompetisi resmi.</p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="gallery-item latihan glass-card rounded-2xl overflow-hidden group">
+                    <div class="h-48 bg-slate-800 flex flex-col items-center justify-center p-6 text-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent z-10"></div>
+                        <i class="fas fa-stopwatch text-6xl text-emeraldNeon group-hover:scale-110 transition-transform"></i>
+                        <span class="absolute top-3 left-3 px-3 py-1 rounded-md bg-emeraldNeon text-slate-950 font-black text-[10px] uppercase z-20">Stamina Test</span>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-white text-base">VO2 Max Test & Endurance Run</h4>
+                        <p class="text-xs text-slate-400 mt-1">Pengukuran kapasitas paru-paru dan batas stamina maksimal atlet.</p>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="gallery-item fitness glass-card rounded-2xl overflow-hidden group">
+                    <div class="h-48 bg-slate-800 flex flex-col items-center justify-center p-6 text-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent z-10"></div>
+                        <i class="fas fa-heartbeat text-6xl text-rose-500 group-hover:scale-110 transition-transform"></i>
+                        <span class="absolute top-3 left-3 px-3 py-1 rounded-md bg-rose-500 text-white font-black text-[10px] uppercase z-20">Recovery</span>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-white text-base">Peregangan & Pemulihan Otot</h4>
+                        <p class="text-xs text-slate-400 mt-1">Sesi penting untuk mencegah cedera dan menjaga kesiapan kondisi tubuh.</p>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="gallery-item tanding glass-card rounded-2xl overflow-hidden group">
+                    <div class="h-48 bg-slate-800 flex flex-col items-center justify-center p-6 text-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent z-10"></div>
+                        <i class="fas fa-medal text-6xl text-amber-400 group-hover:scale-110 transition-transform"></i>
+                        <span class="absolute top-3 left-3 px-3 py-1 rounded-md bg-amber-400 text-slate-950 font-black text-[10px] uppercase z-20">Kejuaraan</span>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-white text-base">Persiapan Kejuaraan Daerah Jawa Barat</h4>
+                        <p class="text-xs text-slate-400 mt-1">Target meraih podium pertama dan membawa nama harum Bandung.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Timeline & Target Karier -->
+    <section id="timeline" class="py-20 px-4 sm:px-8 relative z-10">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-amber-400 mb-2 block">Rencana & Impian</span>
+                <h2 class="text-3xl sm:text-5xl font-black text-white uppercase font-display">Target Karier Atlet</h2>
+                <div class="w-20 h-1.5 bg-gradient-to-r from-amber-400 to-orangeNeon mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <div class="relative border-l-2 border-slate-800 ml-4 sm:ml-32 space-y-12">
+                
+                <!-- Target 1 -->
+                <div class="relative pl-8 group">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-orangeNeon border-4 border-slate-950 group-hover:scale-125 transition-transform"></div>
+                    <span class="sm:absolute sm:-left-32 sm:top-1 text-xs font-bold text-orangeNeon tracking-wider">SEKARANG (USIA 16)</span>
+                    <div class="glass-panel p-6 rounded-2xl">
+                        <h4 class="font-bold text-white text-lg">Pembentukan Fisik & Ikut Seleksi Pembinaan</h4>
+                        <p class="text-xs text-slate-300 mt-2 leading-relaxed">Fokus melatih disiplin harian di Kp. Lebak Siuh Bandung, meningkatkan kemampuan teknik dasar, stamina, dan mengikuti seleksi tim daerah.</p>
+                    </div>
+                </div>
+
+                <!-- Target 2 -->
+                <div class="relative pl-8 group">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-amber-400 border-4 border-slate-950 group-hover:scale-125 transition-transform"></div>
+                    <span class="sm:absolute sm:-left-32 sm:top-1 text-xs font-bold text-amber-400 tracking-wider">2027 (USIA 17)</span>
+                    <div class="glass-panel p-6 rounded-2xl">
+                        <h4 class="font-bold text-white text-lg">Menjadi Pemain Utama Kejuaraan Regional</h4>
+                        <p class="text-xs text-slate-300 mt-2 leading-relaxed">Menjadi pilar utama tim di tingkat Provinsi Jawa Barat dan mengumpulkan prestasi tingkat pelajar/muda.</p>
+                    </div>
+                </div>
+
+                <!-- Target 3 -->
+                <div class="relative pl-8 group">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-cyanNeon border-4 border-slate-950 group-hover:scale-125 transition-transform"></div>
+                    <span class="sm:absolute sm:-left-32 sm:top-1 text-xs font-bold text-cyanNeon tracking-wider">TARGET MASA DEPAN</span>
+                    <div class="glass-panel p-6 rounded-2xl border-cyanNeon/30">
+                        <h4 class="font-bold text-white text-lg">Kontrak Profesional & Kontribusi Nasional</h4>
+                        <p class="text-xs text-slate-300 mt-2 leading-relaxed">Menembus klub olahraga profesional teratas tanah air dan berkesempatan membela Indonesia di ajang internasional.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Kontak -->
+    <section id="contact" class="py-20 px-4 sm:px-8 relative z-10 bg-slate-950/80">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-orangeNeon mb-2 block">Peluang & Kerjasama</span>
+                <h2 class="text-3xl sm:text-5xl font-black text-white uppercase font-display">Hubungi Dzikra Rifqi</h2>
+                <p class="text-sm text-slate-400 mt-2">Terbuka untuk tawaran akademi, sparring tanding, sponsor, atau konsultasi latihan bersama.</p>
+                <div class="w-20 h-1.5 bg-gradient-to-r from-orangeNeon to-amberNeon mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
+                <!-- Contact Direct Details -->
+                <div class="lg:col-span-5 space-y-4">
+                    <div class="glass-card p-6 rounded-2xl flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-orangeNeon/10 border border-orangeNeon/30 flex items-center justify-center text-orangeNeon text-xl shrink-0">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 font-semibold uppercase">Alamat Domisili</span>
+                            <p class="text-sm font-bold text-white mt-0.5">Kp. Lebak Siuh No. 123, Bandung</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-cyanNeon/10 border border-cyanNeon/30 flex items-center justify-center text-cyanNeon text-xl shrink-0">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 font-semibold uppercase">Email Resmi</span>
+                            <p class="text-sm font-bold text-white mt-0.5">dzikra.rifqi@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-emeraldNeon/10 border border-emeraldNeon/30 flex items-center justify-center text-emeraldNeon text-xl shrink-0">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 font-semibold uppercase">WhatsApp Direct</span>
+                            <p class="text-sm font-bold text-white mt-0.5">+62 813-XXXX-XXXX</p>
+                        </div>
+                    </div>
+
+                    <!-- Social Media Links -->
+                    <div class="glass-card p-6 rounded-2xl text-center">
+                        <span class="text-xs text-slate-400 font-semibold uppercase tracking-wider block mb-4">Media Sosial Atlet</span>
+                        <div class="flex justify-center gap-4">
+                            <a href="#" aria-label="Instagram" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-orangeNeon hover:text-slate-950 text-slate-300 flex items-center justify-center transition-all border border-slate-700">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" aria-label="TikTok" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-orangeNeon hover:text-slate-950 text-slate-300 flex items-center justify-center transition-all border border-slate-700">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+                            <a href="#" aria-label="YouTube" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-orangeNeon hover:text-slate-950 text-slate-300 flex items-center justify-center transition-all border border-slate-700">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Form -->
+                <div class="lg:col-span-7">
+                    <form id="contact-form" class="glass-panel p-6 sm:p-8 rounded-3xl space-y-4 shadow-2xl">
+                        <h3 class="text-lg font-bold text-white mb-2">Kirim Pesan Langsung</h3>
+                        
+                        <div>
+                            <label for="name" class="block text-xs font-semibold text-slate-300 uppercase mb-1">Nama Lengkap Anda</label>
+                            <input type="text" id="name" required placeholder="Masukkan nama Anda" class="w-full px-4 py-3 rounded-xl bg-slate-950/90 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-orangeNeon transition-all">
+                        </div>
+
+                        <div>
+                            <label for="contact-info" class="block text-xs font-semibold text-slate-300 uppercase mb-1">Email / WhatsApp</label>
+                            <input type="text" id="contact-info" required placeholder="Email atau Nomor WA Anda" class="w-full px-4 py-3 rounded-xl bg-slate-950/90 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-orangeNeon transition-all">
+                        </div>
+
+                        <div>
+                            <label for="subject" class="block text-xs font-semibold text-slate-300 uppercase mb-1">Topik Keperluan</label>
+                            <select id="subject" class="w-full px-4 py-3 rounded-xl bg-slate-950/90 border border-slate-700 text-white text-sm focus:outline-none focus:border-orangeNeon transition-all">
+                                <option>Ajak Sparring / Tanding Bersama</option>
+                                <option>Tawaran Bergabung Tim / Akademi</option>
+                                <option>Sponsorship & Dukungan</option>
+                                <option>Lainnya</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-xs font-semibold text-slate-300 uppercase mb-1">Pesan Anda</label>
+                            <textarea id="message" rows="4" required placeholder="Tuliskan detail pesan atau jadwal latihan di sini..." class="w-full px-4 py-3 rounded-xl bg-slate-950/90 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-orangeNeon transition-all"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-orangeNeon to-amberNeon text-slate-950 font-black text-xs uppercase tracking-wider transition-all shadow-lg hover:shadow-orangeNeon/40 hover:scale-[1.01] flex items-center justify-center gap-2">
+                            <i class="fas fa-paper-plane text-xs"></i>
+                            <span>Kirim Pesan Ke Dzikra</span>
+                        </button>
+
+                        <div id="form-toast" class="hidden p-3 rounded-xl text-center text-xs font-bold transition-all"></div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-4 text-center text-xs text-slate-500 border-t border-slate-800/80 relative z-10">
+        <p>© 2026 Dzikra Rifqi Radifan. All rights reserved.</p>
+        <p class="mt-1">Kp. Lebak Siuh No. 123, Bandung | Calon Atlet Profesional Indonesia 🇮🇩</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
     <script>
-        function sapaPengunjung() {
-            const pesanElement = document.getElementById("pesan");
-            pesanElement.innerText = "🔥 Terima kasih! Terus berjuang untuk meraih cita-cita menjadi atlet hebat!";
-            pesanElement.classList.add("show");
+        // 1. Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
 
-            // Efek interaktif tombol
-            setTimeout(() => {
-                pesanElement.classList.remove("show");
-            }, 4000);
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // 2. Animated Stats Counter on Scroll
+        const counters = document.querySelectorAll('[data-target]');
+        let animated = false;
+
+        function runCounters() {
+            const heroSection = document.getElementById('hero');
+            const rect = heroSection.getBoundingClientRect();
+            if (rect.top <= window.innerHeight && !animated) {
+                counters.forEach(counter => {
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    let count = 0;
+                    const increment = Math.ceil(target / 40);
+                    const timer = setInterval(() => {
+                        count += increment;
+                        if (count >= target) {
+                            counter.innerText = (counter.innerText.includes('%') ? target + '%' : (counter.innerText.includes('+') ? target + '+' : target));
+                            clearInterval(timer);
+                        } else {
+                            counter.innerText = (counter.innerText.includes('%') ? count + '%' : (counter.innerText.includes('+') ? count + '+' : count));
+                        }
+                    }, 40);
+                });
+                animated = true;
+            }
         }
 
-        // Fitur log di browser console
-        console.log("Website Profil Dzikra Rifqi Radifan siap ditampilkan.");
-    </script>
+        // 3. Category Gallery Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
 
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-gradient-to-r', 'from-orangeNeon', 'to-amberNeon', 'text-slate-950', 'shadow-lg');
+                    b.classList.add('bg-slate-800', 'text-slate-300');
+                });
+                btn.classList.remove('bg-slate-800', 'text-slate-300');
+                btn.classList.add('bg-gradient-to-r', 'from-orangeNeon', 'to-amberNeon', 'text-slate-950', 'shadow-lg');
+
+                const filter = btn.getAttribute('data-filter');
+
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.classList.contains(filter)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // 4. Interactive Sports Particle Network Background
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+
+        function resizeCanvas() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.9;
+                this.vy = (Math.random() - 0.5) * 0.9;
+                this.radius = Math.random() * 2 + 1;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = '#ff5500';
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const particleCount = Math.floor(width / 22);
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateCanvas() {
+            ctx.clearRect(0, 0, width, height);
+
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < 120) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(255, 85, 0, ${1 - dist / 120})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            requestAnimationFrame(animateCanvas);
+        }
+
+        // 5. Contact Form Submission Notification
+        const contactForm = document.getElementById('contact-form');
+        const formToast = document.getElementById('form-toast');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            formToast.classList.remove('hidden');
+            formToast.classList.add('bg-emerald-500/20', 'text-emerald-400', 'border', 'border-emerald-500/40');
+            formToast.innerText = 'Pesan berhasil terkirim! Terima kasih telah menghubungi Dzikra Rifqi Radifan.';
+            contactForm.reset();
+
+            setTimeout(() => {
+                formToast.classList.add('hidden');
+            }, 5000);
+        });
+
+        // Initialize Everything on Window Load
+        window.onload = function() {
+            resizeCanvas();
+            initParticles();
+            animateCanvas();
+            runCounters();
+        };
+
+        window.onresize = function() {
+            resizeCanvas();
+            initParticles();
+        };
+
+        window.onscroll = function() {
+            runCounters();
+        };
+    </script>
 </body>
 </html>
